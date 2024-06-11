@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nokia-3310</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="mobile-phone.png">
+    <style>
+        
+    </style>
+</head>
+<body>
+    <img id="nokia" src="nokia-3310.jpg">
+    
+    <div id="callcontrol">
+        <button id="showVideoButton">Answer the call</button>
+        <button id="displayVideoButton">Cancel</button>
+        <button id="refreshButton">Call</button>
+    </div>
+
+    <video id="videoContainer" style="display: none;" src="hello-how are you I am under the water.mp4"></video>
+
+    <audio id="audio" src="nokia-ringtone-Destiny.mp3" autoplay loop></audio>
+
+    <div id="box"><p class="footer-title">Nokia-3310 Ringtone</p></div>
+
+    <script>
+        let nokia = document.getElementById("nokia");
+        let audio = document.getElementById("audio");
+        let refreshButton = document.getElementById("refreshButton");
+        let videoContainer = document.getElementById("videoContainer");
+        let displayVideoButton = document.getElementById("displayVideoButton");
+
+
+        showVideoButton.addEventListener("click", function() {
+            audio.muted = true;
+            videoContainer.play();
+            refreshButton.disabled = true;
+            displayVideoButton.disabled = true;
+            nokia.style.animation = "none";
+            refreshButton.style.opacity = "70%";
+            videoContainer.style.display = "block";
+            displayVideoButton.style.opacity = "70%";
+        });
+
+        displayVideoButton.addEventListener("click", function(){
+            audio.muted = true;
+            nokia.style.animation = "none";
+            refreshButton.disabled = false;
+            showVideoButton.disabled = true;
+            displayVideoButton.disabled = true;
+            showVideoButton.style.opacity = "70%";
+            displayVideoButton.style.opacity = "70%";
+        });
+
+        videoContainer.addEventListener("ended", function() {
+            refreshButton.disabled = false;
+            showVideoButton.disabled = true;
+            displayVideoButton.disabled = true;
+            videoContainer.style.display = "none";
+            refreshButton.style.opacity = "100%";
+            showVideoButton.style.opacity = "100%";
+            displayVideoButton.style.opacity = "100%";
+        });
+
+        refreshButton.addEventListener("click", function() {
+            location.reload();
+        });
+    </script>
+</body>
+</html>
